@@ -1,23 +1,19 @@
-import logo from './logo.svg';
+import { useSelector } from 'react-redux';
 import './App.css';
+import Addtask from './componet/Addtask';
+import Tasklist from './componet/Tasklist';
 
 function App() {
+  // const [task,settask]=useState(
+  //   [{id :Math.random(),mytask: "gym" , done :true},
+  //   {id :Math.random(),mytask: "working" , done :false}]
+  const tasks= useSelector(state => state.taskreducer.tasks)
+  console.log(tasks);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> this is my to do list </h1>
+      <Addtask/>
+      <Tasklist tasks={tasks}/>
     </div>
   );
 }
